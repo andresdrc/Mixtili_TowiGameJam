@@ -1,0 +1,247 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Puzzle/gato/SiluetaGato.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=3]
+[ext_resource path="res://Puzzle/gato/brazo.png" type="Texture" id=4]
+[ext_resource path="res://Puzzle/gato/cabeza2.png" type="Texture" id=5]
+[ext_resource path="res://Puzzle/gato/cabeza1.png" type="Texture" id=6]
+[ext_resource path="res://Puzzle/gato/cola.png" type="Texture" id=7]
+[ext_resource path="res://Puzzle/gato/espalda.png" type="Texture" id=8]
+[ext_resource path="res://Puzzle/gato/muslo.png" type="Texture" id=9]
+[ext_resource path="res://Puzzle/gato/pecho.png" type="Texture" id=10]
+[ext_resource path="res://Puzzle/gato/oreja2.png" type="Texture" id=11]
+[ext_resource path="res://Puzzle/gato/pata2.png" type="Texture" id=12]
+[ext_resource path="res://Puzzle/gato/oreja1.png" type="Texture" id=13]
+[ext_resource path="res://Puzzle/gato/pata1.png" type="Texture" id=14]
+[ext_resource path="res://Puzzle/pieza.gd" type="Script" id=15]
+
+[node name="PuzzleGato" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 89.0
+margin_bottom = 89.0
+texture_normal = ExtResource( 2 )
+
+[node name="FondoFichas" type="Sprite" parent="."]
+modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
+position = Vector2( 420, 298 )
+scale = Vector2( 3.21739, 3.65217 )
+texture = ExtResource( 3 )
+
+[node name="SiluetaGato" parent="." instance=ExtResource( 1 )]
+position = Vector2( 789, 293 )
+scale = Vector2( 0.826332, 0.826332 )
+
+[node name="Oreja1" parent="SiluetaGato" index="1"]
+position = Vector2( -210.569, -156.112 )
+
+[node name="Oreja2" parent="SiluetaGato" index="2"]
+position = Vector2( -102.864, -233.562 )
+
+[node name="Cabeza1" parent="SiluetaGato" index="3"]
+position = Vector2( -133.118, -114.966 )
+
+[node name="Cabeza2" parent="SiluetaGato" index="4"]
+position = Vector2( -82.2913, -153.691 )
+
+[node name="Pecho" parent="SiluetaGato" index="5"]
+position = Vector2( -82.2913, 43.566 )
+
+[node name="Brazo" parent="SiluetaGato" index="6"]
+position = Vector2( -123.437, 182.735 )
+
+[node name="Pata1" parent="SiluetaGato" index="7"]
+position = Vector2( -185.156, 250.504 )
+
+[node name="Pata2" parent="SiluetaGato" index="8"]
+position = Vector2( -61.7186, 257.766 )
+
+[node name="Espalda" parent="SiluetaGato" index="9"]
+position = Vector2( 8.47119, 90.7625 )
+
+[node name="Muslo" parent="SiluetaGato" index="10"]
+position = Vector2( 36.3051, 229.932 )
+
+[node name="Cola" parent="SiluetaGato" index="11"]
+position = Vector2( 197.257, 119.807 )
+
+[node name="Fichas" type="Node2D" parent="."]
+position = Vector2( -420, -20 )
+
+[node name="Brazo" type="Sprite" parent="Fichas"]
+position = Vector2( 688.157, 443.576 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 4 )
+offset = Vector2( -1.22327, 8.56358 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Brazo"]
+position = Vector2( -1.22333, 8.56356 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Brazo/Area2D"]
+polygon = PoolVector2Array( -11.0104, -78.2955, 47.7112, -13.4571, -48.9348, 78.2955 )
+
+[node name="Cabeza1" type="Sprite" parent="Fichas"]
+position = Vector2( 680, 198 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 6 )
+offset = Vector2( 7.34027, -11.0103 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cabeza1"]
+position = Vector2( 7.34021, -9.78693 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cabeza1/Area2D"]
+polygon = PoolVector2Array( -25.6908, -67.2852, 57.4982, 53.8282, 33.0308, 64.8385, 2.44666, 67.2852, -20.7973, 58.7216, -39.1478, 42.8179, -53.8282, 19.5739, -57.4984, -4.89343, -52.6049, -33.0309, -41.5945, -52.6048 )
+
+[node name="Cabeza2" type="Sprite" parent="Fichas"]
+position = Vector2( 722, 166 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 5 )
+offset = Vector2( -11.0104, 15.9037 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cabeza2"]
+position = Vector2( -11.0103, 14.6804 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cabeza2/Area2D"]
+polygon = PoolVector2Array( -57.4982, -53.8281, 24.4674, 67.2852, 41.5945, 51.3815, 56.275, 26.9141, 58.7217, 3.05176e-05, 50.1581, -29.3608, 34.2543, -46.4879, 15.9038, -59.9449, -12.2336, -67.2852, -39.1477, -63.6151 )
+
+[node name="Cola" type="Sprite" parent="Fichas"]
+position = Vector2( 953, 392 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -7.34024 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cola"]
+position = Vector2( -1.22333, -6.11685 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cola/Area2D"]
+polygon = PoolVector2Array( -7.34021, -51.3814, 57.4983, -72.1786, 4.89349, 68.5086, -56.2749, 73.4021 )
+
+[node name="Espalda" type="Sprite" parent="Fichas"]
+position = Vector2( 797, 368 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 8 )
+offset = Vector2( 23.244, -42.8179 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Espalda"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Espalda/Area2D"]
+polygon = PoolVector2Array( -36.701, -181.058, 133.347, 92.976, -86.8591, 89.3058 )
+
+[node name="Muslo" type="Sprite" parent="Fichas"]
+position = Vector2( 820, 483 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 9 )
+offset = Vector2( -4.89343, -1.22337 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Muslo"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Muslo/Area2D"]
+polygon = PoolVector2Array( -114.996, -50.1581, 103.986, -46.488, 50.1581, 47.7113, -52.6047, 47.7113 )
+
+[node name="Oreja1" type="Sprite" parent="Fichas"]
+position = Vector2( 616, 164 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 13 )
+offset = Vector2( -6.11682, 9.78696 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Oreja1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Oreja1/Area2D"]
+polygon = PoolVector2Array( -45.2646, -33.0309, 33.0309, -15.9038, 11.0103, 53.8282 )
+
+[node name="Oreja2" type="Sprite" parent="Fichas"]
+position = Vector2( 705, 100 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 11 )
+offset = Vector2( 9.78696, -9.7869 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Oreja2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Oreja2/Area2D"]
+polygon = PoolVector2Array( -14.6804, -45.2646, 46.488, 26.9141, -26.9141, 22.0206 )
+
+[node name="Pata1" type="Sprite" parent="Fichas"]
+position = Vector2( 637.157, 499.576 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 14 )
+offset = Vector2( -7.34027, -7.34019 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Pata1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata1/Area2D"]
+polygon = PoolVector2Array( -39.1478, 15.9038, 24.4673, -31.8076, 12.2336, 17.1271 )
+
+[node name="Pata2" type="Sprite" parent="Fichas"]
+position = Vector2( 739, 506 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 12 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Pata2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata2/Area2D"]
+polygon = PoolVector2Array( -23.244, -20.7973, 20.7972, -20.7973, 46.4879, 20.7972, -46.488, 20.7972 )
+
+[node name="Pecho" type="Sprite" parent="Fichas"]
+position = Vector2( 722, 329 )
+scale = Vector2( 0.817416, 0.817416 )
+texture = ExtResource( 10 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Pecho"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pecho/Area2D"]
+polygon = PoolVector2Array( -15.9039, -86.8591, -53.8282, 69.7319, 4.89337, 134.57, 55.0515, -135.794 )
+
+[editable path="SiluetaGato"]

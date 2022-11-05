@@ -1,0 +1,160 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Puzzle/pez/SiluetaPez.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Puzzle/pez/aleta.png" type="Texture" id=3]
+[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=4]
+[ext_resource path="res://Puzzle/pieza.gd" type="Script" id=5]
+[ext_resource path="res://Puzzle/pez/cola.png" type="Texture" id=6]
+[ext_resource path="res://Puzzle/pez/cuerpo.png" type="Texture" id=7]
+[ext_resource path="res://Puzzle/pez/cabeza.png" type="Texture" id=8]
+[ext_resource path="res://Puzzle/pez/cola2.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.6165, 73.1071 )
+
+[node name="Puzzle" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 89.0
+margin_bottom = 89.0
+texture_normal = ExtResource( 2 )
+
+[node name="FondoFichas" type="Sprite" parent="."]
+modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
+position = Vector2( 405, 298 )
+scale = Vector2( 2.8913, 3.65217 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="FondoFichas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FondoFichas/Area2D"]
+shape = SubResource( 1 )
+
+[node name="SiluetaPez" parent="." instance=ExtResource( 1 )]
+position = Vector2( 785, 284 )
+scale = Vector2( 0.82495, 0.82495 )
+
+[node name="Cola" parent="SiluetaPez" index="1"]
+position = Vector2( -208.497, 25.4561 )
+
+[node name="Cola2" parent="SiluetaPez" index="2"]
+position = Vector2( -47.2756, 24.2439 )
+
+[node name="Aleta" parent="SiluetaPez" index="3"]
+position = Vector2( 64.2463, -77.5804 )
+
+[node name="Cuerpo" parent="SiluetaPez" index="4"]
+position = Vector2( 89.7025, 24.2439 )
+
+[node name="Cabeza" parent="SiluetaPez" index="5"]
+position = Vector2( 215.771, 25.4561 )
+
+[node name="Fichas" type="Node2D" parent="."]
+position = Vector2( -470, -106 )
+
+[node name="Aleta" type="Sprite" parent="Fichas"]
+position = Vector2( 838, 220 )
+scale = Vector2( 0.846846, 0.846846 )
+texture = ExtResource( 3 )
+offset = Vector2( 25.9788, -5.90425 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Aleta"]
+position = Vector2( 2.36169, 1.18085 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Aleta/Area2D"]
+polygon = PoolVector2Array( -47.234, -28.3404, 105.096, 15.3511, -59.0425, 15.3511 )
+
+[node name="Cabeza" type="Sprite" parent="Fichas"]
+position = Vector2( 963, 304 )
+scale = Vector2( 0.835579, 0.835579 )
+texture = ExtResource( 8 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cabeza"]
+position = Vector2( -6.23166, 1.24634 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fichas/Cabeza/Area2D"]
+polygon = PoolVector2Array( -34.8973, -85.9969, 49.8533, 2.49266, -34.8973, 83.5043 )
+
+[node name="Cola2" type="Sprite" parent="Fichas"]
+position = Vector2( 746, 304 )
+scale = Vector2( 0.829398, 0.829398 )
+texture = ExtResource( 9 )
+offset = Vector2( -20, 0 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cola2"]
+position = Vector2( 9.36456, -2.34113 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fichas/Cola2/Area2D"]
+polygon = PoolVector2Array( -101.84, 3.51169, 43.3112, -80.7693, 43.3112, 87.7928 )
+
+[node name="Cola" type="Sprite" parent="Fichas"]
+position = Vector2( 613, 304 )
+scale = Vector2( 0.841327, 0.841327 )
+texture = ExtResource( 6 )
+offset = Vector2( 10, 0 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cola"]
+position = Vector2( -4.75439, -1.18861 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fichas/Cola/Area2D"]
+polygon = PoolVector2Array( -42.7894, -66.5615, 72.5046, 1.1886, -41.6008, 67.7501 )
+
+[node name="Cuerpo" type="Sprite" parent="Fichas"]
+position = Vector2( 859, 304 )
+scale = Vector2( 0.834812, 0.834812 )
+texture = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Cuerpo"]
+position = Vector2( -3.65582, 4.8745 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fichas/Cuerpo/Area2D"]
+polygon = PoolVector2Array( -79.2108, -90.1784, 86.5225, -88.9598, 86.5225, 79.2108, -79.2108, 79.2108 )
+
+[connection signal="mouse_entered" from="Fichas/Aleta/Area2D" to="Fichas/Aleta" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Fichas/Aleta/Area2D" to="Fichas/Aleta" method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="Fichas/Cabeza/Area2D" to="Fichas/Cabeza" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Fichas/Cabeza/Area2D" to="Fichas/Cabeza" method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="Fichas/Cola2/Area2D" to="Fichas/Cola2" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Fichas/Cola2/Area2D" to="Fichas/Cola2" method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="Fichas/Cola/Area2D" to="Fichas/Cola" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Fichas/Cola/Area2D" to="Fichas/Cola" method="_on_Area2D_mouse_exited"]
+
+[editable path="SiluetaPez"]

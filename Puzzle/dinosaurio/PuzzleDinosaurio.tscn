@@ -1,0 +1,194 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://Puzzle/dinosaurio/dientes2.png" type="Texture" id=1]
+[ext_resource path="res://Puzzle/dinosaurio/dientes1.png" type="Texture" id=2]
+[ext_resource path="res://Puzzle/dinosaurio/siluetaDinosaurio.png" type="Texture" id=3]
+[ext_resource path="res://Puzzle/dinosaurio/cuello.png" type="Texture" id=4]
+[ext_resource path="res://Puzzle/dinosaurio/ocico1.png" type="Texture" id=5]
+[ext_resource path="res://Puzzle/dinosaurio/espalda1.png" type="Texture" id=6]
+[ext_resource path="res://Puzzle/dinosaurio/espalda2.png" type="Texture" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=9]
+[ext_resource path="res://Puzzle/dinosaurio/pata1_2.png" type="Texture" id=10]
+[ext_resource path="res://Puzzle/dinosaurio/pierna1_4.png" type="Texture" id=11]
+[ext_resource path="res://Puzzle/dinosaurio/pierna1_2.png" type="Texture" id=12]
+[ext_resource path="res://Puzzle/dinosaurio/pata2_3.png" type="Texture" id=13]
+[ext_resource path="res://Puzzle/dinosaurio/pierna2_3.png" type="Texture" id=14]
+[ext_resource path="res://Puzzle/dinosaurio/ojos.png" type="Texture" id=15]
+[ext_resource path="res://Puzzle/dinosaurio/pecho1.png" type="Texture" id=16]
+[ext_resource path="res://Puzzle/dinosaurio/pata1_1.png" type="Texture" id=17]
+[ext_resource path="res://Puzzle/dinosaurio/pata2_2.png" type="Texture" id=18]
+[ext_resource path="res://Puzzle/dinosaurio/pierna1_1.png" type="Texture" id=19]
+[ext_resource path="res://Puzzle/dinosaurio/pierna1_3.png" type="Texture" id=20]
+[ext_resource path="res://Puzzle/dinosaurio/pierna2_1.png" type="Texture" id=21]
+[ext_resource path="res://Puzzle/dinosaurio/pata1_3.png" type="Texture" id=22]
+[ext_resource path="res://Puzzle/dinosaurio/pata2_1.png" type="Texture" id=23]
+[ext_resource path="res://Puzzle/dinosaurio/pecho2.png" type="Texture" id=24]
+[ext_resource path="res://Puzzle/dinosaurio/pierna2_2.png" type="Texture" id=25]
+[ext_resource path="res://Puzzle/dinosaurio/ocico2.png" type="Texture" id=26]
+[ext_resource path="res://Puzzle/dinosaurio/cola1.png" type="Texture" id=27]
+[ext_resource path="res://Puzzle/dinosaurio/cola2.png" type="Texture" id=28]
+[ext_resource path="res://Puzzle/dinosaurio/cola3.png" type="Texture" id=29]
+[ext_resource path="res://Puzzle/dinosaurio/cabeza.png" type="Texture" id=30]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="PuzzleDinosaurio" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 89.0
+margin_bottom = 89.0
+texture_normal = ExtResource( 8 )
+
+[node name="FondoFichas" type="Sprite" parent="."]
+modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
+position = Vector2( 641.368, 464.686 )
+rotation = 1.5708
+scale = Vector2( 2.69174, 4.69214 )
+texture = ExtResource( 9 )
+
+[node name="SiluetaDinosaurio" type="Node2D" parent="."]
+position = Vector2( 687, 177 )
+
+[node name="SiluetaDinosaurio" type="Sprite" parent="SiluetaDinosaurio"]
+scale = Vector2( 1.14634, 1.14634 )
+texture = ExtResource( 3 )
+
+[node name="Ocico1" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -252, -121 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Ocico1"]
+shape = SubResource( 1 )
+
+[node name="Ocico2" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -242, -48 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Ocico2"]
+shape = SubResource( 1 )
+
+[node name="Dientes1" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -259, -89 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Dientes1"]
+shape = SubResource( 1 )
+
+[node name="Piezas" type="Node2D" parent="."]
+position = Vector2( 75, 231 )
+
+[node name="Cabeza" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 30 )
+
+[node name="Cola1" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 27 )
+
+[node name="Cola2" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 28 )
+
+[node name="Cola3" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 29 )
+
+[node name="Cuello" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 4 )
+
+[node name="Dientes1" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 2 )
+
+[node name="Dientes2" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 1 )
+
+[node name="Espalda1" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 6 )
+
+[node name="Espalda2" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 7 )
+
+[node name="Ocico1" type="Sprite" parent="Piezas"]
+position = Vector2( 359, -175 )
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 5 )
+
+[node name="Ocico2" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 26 )
+
+[node name="Ojos" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 15 )
+
+[node name="Pata11" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 17 )
+
+[node name="Pata12" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 10 )
+
+[node name="Pata13" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 22 )
+
+[node name="Pata21" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 23 )
+
+[node name="Pata22" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 18 )
+
+[node name="Pata23" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 13 )
+
+[node name="Pecho1" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 16 )
+
+[node name="Pecho2" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 24 )
+
+[node name="Pierna11" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 19 )
+
+[node name="Pierna12" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 12 )
+
+[node name="Pierna13" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 20 )
+
+[node name="Pierna14" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 11 )
+
+[node name="Pierna21" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 21 )
+
+[node name="Pierna22" type="Sprite" parent="Piezas"]
+position = Vector2( -47, 38 )
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 25 )
+
+[node name="Pierna23" type="Sprite" parent="Piezas"]
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 14 )
