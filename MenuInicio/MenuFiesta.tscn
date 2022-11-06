@@ -1,3 +1,130 @@
-[gd_scene format=2]
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://mixtili/Mixtili.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MenuInicio/fondo.png" type="Texture" id=2]
+[ext_resource path="res://MenuInicio/menuFiesta.gd" type="Script" id=3]
+[ext_resource path="res://Puzzle/pez/pez1.png" type="Texture" id=4]
+[ext_resource path="res://Puzzle/dinosaurio/dino1.png" type="Texture" id=5]
+[ext_resource path="res://Puzzle/gato/gato1.png" type="Texture" id=6]
+[ext_resource path="res://MenuInicio/salirHover.png" type="Texture" id=7]
+[ext_resource path="res://MenuInicio/salirNormal.png" type="Texture" id=8]
+[ext_resource path="res://MenuInicio/salirClick.png" type="Texture" id=9]
+[ext_resource path="res://timer/slider.png" type="Texture" id=10]
+[ext_resource path="res://MenuInicio/TowiFront.png" type="Texture" id=11]
+[ext_resource path="res://MenuInicio/Tuki.png" type="Texture" id=12]
 
 [node name="MenuFiesta" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Fondo" type="Sprite" parent="."]
+position = Vector2( 531, 289 )
+scale = Vector2( 0.581298, 0.581298 )
+texture = ExtResource( 2 )
+
+[node name="TowiFront" type="Sprite" parent="."]
+visible = false
+position = Vector2( 793, 396 )
+scale = Vector2( 0.178393, 0.178393 )
+texture = ExtResource( 11 )
+
+[node name="Tuki" type="Sprite" parent="."]
+visible = false
+position = Vector2( 522, 376 )
+scale = Vector2( 0.192175, 0.192175 )
+texture = ExtResource( 12 )
+
+[node name="Mixtili" parent="." instance=ExtResource( 1 )]
+position = Vector2( 125, 413 )
+scale = Vector2( 0.626856, 0.626856 )
+
+[node name="Dino1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 383, 435 )
+scale = Vector2( 0.624869, 0.624869 )
+texture = ExtResource( 5 )
+
+[node name="Gato1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 922, 463 )
+scale = Vector2( 0.444136, 0.444136 )
+texture = ExtResource( 6 )
+
+[node name="Pez1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 667, 448 )
+scale = Vector2( 0.464616, 0.464616 )
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+
+[node name="BotonSalir" type="TextureButton" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 89.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 7 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 122, 78 )
+amount = 20
+lifetime = 3.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 1, 1 )
+spread = 163.08
+gravity = Vector2( 0, 102.509 )
+initial_velocity = 112.07
+initial_velocity_random = 0.06
+angular_velocity = 198.62
+angular_velocity_random = 0.29
+orbit_velocity = -0.15
+radial_accel = 100.0
+tangential_accel = 53.45
+color = Color( 0.027451, 0.976471, 0.898039, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 521, 77 )
+amount = 20
+lifetime = 3.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 1, 1 )
+spread = 163.08
+gravity = Vector2( 0, 102.509 )
+initial_velocity = 112.07
+initial_velocity_random = 0.06
+angular_velocity = 198.62
+angular_velocity_random = 0.29
+orbit_velocity = -0.15
+radial_accel = 100.0
+tangential_accel = 53.45
+color = Color( 0.941176, 1, 0, 1 )
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2( 891, 67 )
+amount = 20
+lifetime = 3.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 10 )
+direction = Vector2( 1, 1 )
+spread = 163.08
+gravity = Vector2( 0, 102.509 )
+initial_velocity = 112.07
+initial_velocity_random = 0.06
+angular_velocity = 198.62
+angular_velocity_random = 0.29
+orbit_velocity = -0.15
+radial_accel = 100.0
+tangential_accel = 53.45
+color = Color( 0.027451, 0.705882, 0.976471, 1 )
+
+[connection signal="pressed" from="MarginContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]

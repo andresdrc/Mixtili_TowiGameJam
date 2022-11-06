@@ -1,19 +1,60 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Puzzle/pez/SiluetaPez.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://MenuInicio/salirHover.png" type="Texture" id=2]
 [ext_resource path="res://Puzzle/pez/aleta.png" type="Texture" id=3]
-[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=4]
+[ext_resource path="res://mixtili/Mixtili.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Puzzle/pieza.gd" type="Script" id=5]
 [ext_resource path="res://Puzzle/pez/cola.png" type="Texture" id=6]
 [ext_resource path="res://Puzzle/pez/cuerpo.png" type="Texture" id=7]
 [ext_resource path="res://Puzzle/pez/cabeza.png" type="Texture" id=8]
 [ext_resource path="res://Puzzle/pez/cola2.png" type="Texture" id=9]
+[ext_resource path="res://MenuInicio/salirNormal.png" type="Texture" id=10]
+[ext_resource path="res://MenuInicio/salirClick.png" type="Texture" id=11]
+[ext_resource path="res://Puzzle/pez/puzzlePez.gd" type="Script" id=12]
+[ext_resource path="res://Puzzle/fondo.png" type="Texture" id=13]
+[ext_resource path="res://Puzzle/fondo_piezas.png" type="Texture" id=14]
+[ext_resource path="res://timer/fondoTImer.png" type="Texture" id=15]
+[ext_resource path="res://timer/tema_ganar.tres" type="Theme" id=16]
+[ext_resource path="res://Puzzle/pez/pez1.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 44.6165, 73.1071 )
+[node name="PuzzlePez" type="Node2D"]
+script = ExtResource( 12 )
 
-[node name="Puzzle" type="Node2D"]
+[node name="Fondo" type="Sprite" parent="."]
+position = Vector2( 512, 300.5 )
+scale = Vector2( 0.534375, 0.558333 )
+texture = ExtResource( 13 )
+
+[node name="Paneles" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="FondoPiezas" type="Sprite" parent="Paneles"]
+position = Vector2( 633.963, 305.249 )
+scale = Vector2( 0.734447, 0.740205 )
+texture = ExtResource( 14 )
+
+[node name="ColorRect2" type="ColorRect" parent="Paneles"]
+margin_left = 582.0
+margin_top = 14.0
+margin_right = 1009.0
+margin_bottom = 588.0
+mouse_filter = 2
+color = Color( 1, 0.921569, 0.847059, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Paneles"]
+margin_left = 270.0
+margin_top = 14.0
+margin_right = 575.0
+margin_bottom = 588.0
+mouse_filter = 2
+color = Color( 1, 0.862745, 0.4, 1 )
+
+[node name="Mixtili" parent="." instance=ExtResource( 4 )]
+position = Vector2( 136, 431 )
+scale = Vector2( 0.540598, 0.540598 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 40.0
@@ -21,26 +62,17 @@ margin_bottom = 40.0
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+[node name="BotonSalir" type="TextureButton" parent="MarginContainer"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 89.0
-margin_bottom = 89.0
-texture_normal = ExtResource( 2 )
-
-[node name="FondoFichas" type="Sprite" parent="."]
-modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
-position = Vector2( 405, 298 )
-scale = Vector2( 2.8913, 3.65217 )
-texture = ExtResource( 4 )
-
-[node name="Area2D" type="Area2D" parent="FondoFichas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FondoFichas/Area2D"]
-shape = SubResource( 1 )
+margin_bottom = 92.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 2 )
 
 [node name="SiluetaPez" parent="." instance=ExtResource( 1 )]
-position = Vector2( 785, 284 )
+position = Vector2( 797, 283 )
 scale = Vector2( 0.82495, 0.82495 )
 
 [node name="Cola" parent="SiluetaPez" index="1"]
@@ -62,7 +94,7 @@ position = Vector2( 215.771, 25.4561 )
 position = Vector2( -470, -106 )
 
 [node name="Aleta" type="Sprite" parent="Fichas"]
-position = Vector2( 838, 220 )
+position = Vector2( 864, 617 )
 scale = Vector2( 0.846846, 0.846846 )
 texture = ExtResource( 3 )
 offset = Vector2( 25.9788, -5.90425 )
@@ -81,7 +113,7 @@ __meta__ = {
 polygon = PoolVector2Array( -47.234, -28.3404, 105.096, 15.3511, -59.0425, 15.3511 )
 
 [node name="Cabeza" type="Sprite" parent="Fichas"]
-position = Vector2( 963, 304 )
+position = Vector2( 967, 337 )
 scale = Vector2( 0.835579, 0.835579 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
@@ -96,7 +128,7 @@ position = Vector2( -6.23166, 1.24634 )
 polygon = PoolVector2Array( -34.8973, -85.9969, 49.8533, 2.49266, -34.8973, 83.5043 )
 
 [node name="Cola2" type="Sprite" parent="Fichas"]
-position = Vector2( 746, 304 )
+position = Vector2( 840, 334 )
 scale = Vector2( 0.829398, 0.829398 )
 texture = ExtResource( 9 )
 offset = Vector2( -20, 0 )
@@ -112,7 +144,7 @@ position = Vector2( 9.36456, -2.34113 )
 polygon = PoolVector2Array( -101.84, 3.51169, 43.3112, -80.7693, 43.3112, 87.7928 )
 
 [node name="Cola" type="Sprite" parent="Fichas"]
-position = Vector2( 613, 304 )
+position = Vector2( 897, 202 )
 scale = Vector2( 0.841327, 0.841327 )
 texture = ExtResource( 6 )
 offset = Vector2( 10, 0 )
@@ -131,7 +163,7 @@ __meta__ = {
 polygon = PoolVector2Array( -42.7894, -66.5615, 72.5046, 1.1886, -41.6008, 67.7501 )
 
 [node name="Cuerpo" type="Sprite" parent="Fichas"]
-position = Vector2( 859, 304 )
+position = Vector2( 879, 492 )
 scale = Vector2( 0.834812, 0.834812 )
 texture = ExtResource( 7 )
 script = ExtResource( 5 )
@@ -148,6 +180,43 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fichas/Cuerpo/Area2D"]
 polygon = PoolVector2Array( -79.2108, -90.1784, 86.5225, -88.9598, 86.5225, 79.2108, -79.2108, 79.2108 )
 
+[node name="AnimalFinal" type="Sprite" parent="."]
+visible = false
+position = Vector2( 793, 315 )
+scale = Vector2( 0.881758, 0.881758 )
+texture = ExtResource( 17 )
+
+[node name="MarginGanar" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 424.0
+margin_top = 19.0
+margin_right = 671.0
+margin_bottom = 149.0
+mouse_filter = 2
+custom_constants/margin_top = 35
+
+[node name="TextureRect" type="TextureRect" parent="MarginGanar"]
+margin_top = 35.0
+margin_right = 247.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 164, 77 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginGanar/TextureRect"]
+margin_left = 18.5
+margin_top = 24.0
+margin_right = 229.5
+margin_bottom = 59.0
+size_flags_horizontal = 4
+theme = ExtResource( 16 )
+text = "Ganaste :)"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="MarginContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]
 [connection signal="mouse_entered" from="Fichas/Aleta/Area2D" to="Fichas/Aleta" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Fichas/Aleta/Area2D" to="Fichas/Aleta" method="_on_Area2D_mouse_exited"]
 [connection signal="mouse_entered" from="Fichas/Cabeza/Area2D" to="Fichas/Cabeza" method="_on_Area2D_mouse_entered"]

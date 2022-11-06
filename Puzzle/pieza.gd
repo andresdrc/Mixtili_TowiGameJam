@@ -43,7 +43,7 @@ func _on_Area2D_exited(area):
 		en_pos_correcta = false
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton and mouse_en_area:
 		if event.button_index == 1:
 			if event.is_pressed():

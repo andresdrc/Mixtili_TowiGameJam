@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mixtili/mixtili_triste.png" type="Texture" id=1]
+[ext_resource path="res://mixtili/mixtili_feliz.png" type="Texture" id=2]
+[ext_resource path="res://mixtili/mixtili_reposo.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "feliz",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "reposo",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "triste",
+"speed": 2.0
+} ]
+
+[node name="Mixtili" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.535499, 0.535499 )
+frames = SubResource( 1 )
+animation = "feliz"
+frame = 1
+playing = true

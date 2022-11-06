@@ -1,10 +1,68 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://timer/slider.png" type="Texture" id=1]
+[ext_resource path="res://MenuInicio/menuInicio.gd" type="Script" id=2]
+[ext_resource path="res://MenuInicio/jugaNormal.png" type="Texture" id=3]
+[ext_resource path="res://MenuInicio/jugaHover.png" type="Texture" id=4]
+[ext_resource path="res://MenuInicio/jugaClick.png" type="Texture" id=5]
+[ext_resource path="res://MenuInicio/sonidoClick.png" type="Texture" id=6]
+[ext_resource path="res://MenuInicio/sonidoHover.png" type="Texture" id=7]
+[ext_resource path="res://MenuInicio/salirHover.png" type="Texture" id=8]
+[ext_resource path="res://MenuInicio/salirNormal.png" type="Texture" id=9]
+[ext_resource path="res://MenuInicio/salirClick.png" type="Texture" id=10]
+[ext_resource path="res://MenuInicio/sonidoNormal.png" type="Texture" id=11]
+[ext_resource path="res://mixtili/Mixtili.tscn" type="PackedScene" id=12]
+[ext_resource path="res://MenuInicio/fondo.png" type="Texture" id=13]
+[ext_resource path="res://MenuInicio/mixtli_logo.png" type="Texture" id=14]
+[ext_resource path="res://Puzzle/dinosaurio/dino1.png" type="Texture" id=15]
+[ext_resource path="res://Puzzle/gato/gato1.png" type="Texture" id=16]
+[ext_resource path="res://MenuInicio/TowiFront.png" type="Texture" id=17]
+[ext_resource path="res://MenuInicio/Tuki.png" type="Texture" id=18]
+[ext_resource path="res://Puzzle/pez/pez1.png" type="Texture" id=19]
 
 [node name="MenuInicio" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Fondo" type="Sprite" parent="."]
+position = Vector2( 514, 303 )
+scale = Vector2( 0.5375, 0.559259 )
+texture = ExtResource( 13 )
+
+[node name="Dino1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 111, 480 )
+scale = Vector2( 0.490654, 0.490654 )
+texture = ExtResource( 15 )
+
+[node name="Gato1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 207, 466 )
+scale = Vector2( 0.524093, 0.524093 )
+texture = ExtResource( 16 )
+
+[node name="Tuki" type="Sprite" parent="."]
+visible = false
+position = Vector2( 688, 416 )
+scale = Vector2( 0.199877, 0.199877 )
+texture = ExtResource( 18 )
+
+[node name="TowiFront" type="Sprite" parent="."]
+visible = false
+position = Vector2( 331, 436 )
+scale = Vector2( 0.195331, 0.195331 )
+texture = ExtResource( 17 )
+
+[node name="Pez1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 851, 477 )
+scale = Vector2( 0.517538, 0.517538 )
+texture = ExtResource( 19 )
+
+[node name="Mixtili" parent="." instance=ExtResource( 12 )]
+position = Vector2( 492, 423 )
+scale = Vector2( 0.610232, 0.610232 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -14,62 +72,74 @@ anchor_bottom = 0.5
 margin_left = -338.0
 margin_top = -136.0
 margin_bottom = 136.0
-custom_constants/margin_right = 100
+custom_constants/margin_right = 20
 custom_constants/margin_top = 50
 custom_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_top = 50.0
-margin_right = 238.0
-margin_bottom = 222.0
+margin_right = 318.0
+margin_bottom = 234.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 238.0
-margin_bottom = 84.0
-custom_constants/margin_top = 20
+margin_right = 318.0
+margin_bottom = 160.0
+custom_constants/margin_top = 80
 
 [node name="BotonJugar" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer"]
-margin_left = 87.0
-margin_top = 20.0
-margin_right = 151.0
-margin_bottom = 84.0
+margin_left = 59.0
+margin_top = 80.0
+margin_right = 259.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 200, 80 )
 size_flags_horizontal = 4
-texture_normal = ExtResource( 1 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 88.0
-margin_right = 238.0
-margin_bottom = 172.0
+margin_top = 164.0
+margin_right = 318.0
+margin_bottom = 184.0
 custom_constants/margin_top = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+visible = false
 margin_top = 20.0
-margin_right = 238.0
-margin_bottom = 84.0
+margin_right = 318.0
+margin_bottom = 87.0
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 margin_right = 64.0
-margin_bottom = 64.0
+margin_bottom = 67.0
 
 [node name="BotonVolumen" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
 margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 1 )
+margin_bottom = 67.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 margin_left = 68.0
-margin_right = 238.0
-margin_bottom = 64.0
+margin_right = 268.0
+margin_bottom = 67.0
 custom_constants/margin_left = 20
 
 [node name="DeslizadorVolumen" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
 margin_left = 20.0
-margin_top = 24.0
-margin_right = 170.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 150, 0 )
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 180, 0 )
 size_flags_vertical = 4
+custom_icons/grabber_disabled = ExtResource( 1 )
+custom_icons/grabber_highlight = ExtResource( 1 )
+custom_icons/grabber = ExtResource( 1 )
+value = 70.0
+ticks_on_borders = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchor_left = 1.0
@@ -83,5 +153,29 @@ custom_constants/margin_bottom = 30
 
 [node name="BotonSalir" type="TextureButton" parent="MarginContainer2"]
 margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 1 )
+margin_bottom = 67.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 8 )
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -267.0
+margin_right = 267.0
+margin_bottom = 255.0
+custom_constants/margin_right = 35
+custom_constants/margin_top = 35
+custom_constants/margin_left = 35
+custom_constants/margin_bottom = 35
+
+[node name="MixtliLogo" type="TextureRect" parent="MarginContainer3"]
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 499.0
+margin_bottom = 220.0
+texture = ExtResource( 14 )
+expand = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/BotonJugar" to="." method="_on_BotonJugar_pressed"]
+[connection signal="pressed" from="MarginContainer2/BotonSalir" to="." method="_on_BotonSalir_pressed"]

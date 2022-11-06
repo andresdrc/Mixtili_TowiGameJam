@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Puzzle/gato/SiluetaGato.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=3]
+[ext_resource path="res://MenuInicio/salirHover.png" type="Texture" id=2]
+[ext_resource path="res://mixtili/Mixtili.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Puzzle/gato/brazo.png" type="Texture" id=4]
 [ext_resource path="res://Puzzle/gato/cabeza2.png" type="Texture" id=5]
 [ext_resource path="res://Puzzle/gato/cabeza1.png" type="Texture" id=6]
@@ -15,30 +15,73 @@
 [ext_resource path="res://Puzzle/gato/oreja1.png" type="Texture" id=13]
 [ext_resource path="res://Puzzle/gato/pata1.png" type="Texture" id=14]
 [ext_resource path="res://Puzzle/pieza.gd" type="Script" id=15]
+[ext_resource path="res://MenuInicio/salirNormal.png" type="Texture" id=16]
+[ext_resource path="res://MenuInicio/salirClick.png" type="Texture" id=17]
+[ext_resource path="res://Puzzle/gato/puzzleGato.gd" type="Script" id=18]
+[ext_resource path="res://Puzzle/fondo.png" type="Texture" id=19]
+[ext_resource path="res://Puzzle/fondo_piezas.png" type="Texture" id=20]
+[ext_resource path="res://timer/Timer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://timer/fondoTImer.png" type="Texture" id=22]
+[ext_resource path="res://timer/tema_ganar.tres" type="Theme" id=23]
+[ext_resource path="res://Puzzle/gato/gato1.png" type="Texture" id=24]
 
 [node name="PuzzleGato" type="Node2D"]
+script = ExtResource( 18 )
+
+[node name="Fondo" type="Sprite" parent="."]
+position = Vector2( 512, 300.5 )
+scale = Vector2( 0.534375, 0.558333 )
+texture = ExtResource( 19 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+[node name="BotonSalir" type="TextureButton" parent="MarginContainer"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 89.0
-margin_bottom = 89.0
-texture_normal = ExtResource( 2 )
+margin_bottom = 92.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 2 )
 
-[node name="FondoFichas" type="Sprite" parent="."]
-modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
-position = Vector2( 420, 298 )
-scale = Vector2( 3.21739, 3.65217 )
-texture = ExtResource( 3 )
+[node name="Paneles" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+mouse_default_cursor_shape = 3
+
+[node name="FondoPiezas" type="Sprite" parent="Paneles"]
+position = Vector2( 633.963, 305.249 )
+scale = Vector2( 0.734447, 0.740205 )
+texture = ExtResource( 20 )
+
+[node name="ColorRect2" type="ColorRect" parent="Paneles"]
+margin_left = 582.0
+margin_top = 14.0
+margin_right = 1009.0
+margin_bottom = 588.0
+mouse_filter = 2
+color = Color( 1, 0.921569, 0.847059, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Paneles"]
+margin_left = 270.0
+margin_top = 14.0
+margin_right = 575.0
+margin_bottom = 588.0
+mouse_filter = 2
+color = Color( 1, 0.862745, 0.4, 1 )
+
+[node name="Mixtili" parent="." instance=ExtResource( 3 )]
+position = Vector2( 136, 431 )
+scale = Vector2( 0.540598, 0.540598 )
 
 [node name="SiluetaGato" parent="." instance=ExtResource( 1 )]
-position = Vector2( 789, 293 )
+position = Vector2( 797, 296 )
 scale = Vector2( 0.826332, 0.826332 )
 
 [node name="Oreja1" parent="SiluetaGato" index="1"]
@@ -78,7 +121,7 @@ position = Vector2( 197.257, 119.807 )
 position = Vector2( -420, -20 )
 
 [node name="Brazo" type="Sprite" parent="Fichas"]
-position = Vector2( 688.157, 443.576 )
+position = Vector2( 846, 139 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 4 )
 offset = Vector2( -1.22327, 8.56358 )
@@ -94,7 +137,7 @@ position = Vector2( -1.22333, 8.56356 )
 polygon = PoolVector2Array( -11.0104, -78.2955, 47.7112, -13.4571, -48.9348, 78.2955 )
 
 [node name="Cabeza1" type="Sprite" parent="Fichas"]
-position = Vector2( 680, 198 )
+position = Vector2( 755, 530 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 6 )
 offset = Vector2( 7.34027, -11.0103 )
@@ -110,7 +153,7 @@ position = Vector2( 7.34021, -9.78693 )
 polygon = PoolVector2Array( -25.6908, -67.2852, 57.4982, 53.8282, 33.0308, 64.8385, 2.44666, 67.2852, -20.7973, 58.7216, -39.1478, 42.8179, -53.8282, 19.5739, -57.4984, -4.89343, -52.6049, -33.0309, -41.5945, -52.6048 )
 
 [node name="Cabeza2" type="Sprite" parent="Fichas"]
-position = Vector2( 722, 166 )
+position = Vector2( 934, 97 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 5 )
 offset = Vector2( -11.0104, 15.9037 )
@@ -126,7 +169,7 @@ position = Vector2( -11.0103, 14.6804 )
 polygon = PoolVector2Array( -57.4982, -53.8281, 24.4674, 67.2852, 41.5945, 51.3815, 56.275, 26.9141, 58.7217, 3.05176e-05, 50.1581, -29.3608, 34.2543, -46.4879, 15.9038, -59.9449, -12.2336, -67.2852, -39.1477, -63.6151 )
 
 [node name="Cola" type="Sprite" parent="Fichas"]
-position = Vector2( 953, 392 )
+position = Vector2( 751, 123 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -7.34024 )
@@ -142,7 +185,7 @@ position = Vector2( -1.22333, -6.11685 )
 polygon = PoolVector2Array( -7.34021, -51.3814, 57.4983, -72.1786, 4.89349, 68.5086, -56.2749, 73.4021 )
 
 [node name="Espalda" type="Sprite" parent="Fichas"]
-position = Vector2( 797, 368 )
+position = Vector2( 770, 382 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 8 )
 offset = Vector2( 23.244, -42.8179 )
@@ -157,7 +200,7 @@ __meta__ = {
 polygon = PoolVector2Array( -36.701, -181.058, 133.347, 92.976, -86.8591, 89.3058 )
 
 [node name="Muslo" type="Sprite" parent="Fichas"]
-position = Vector2( 820, 483 )
+position = Vector2( 905, 526 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 9 )
 offset = Vector2( -4.89343, -1.22337 )
@@ -172,7 +215,7 @@ __meta__ = {
 polygon = PoolVector2Array( -114.996, -50.1581, 103.986, -46.488, 50.1581, 47.7113, -52.6047, 47.7113 )
 
 [node name="Oreja1" type="Sprite" parent="Fichas"]
-position = Vector2( 616, 164 )
+position = Vector2( 822, 271 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 13 )
 offset = Vector2( -6.11682, 9.78696 )
@@ -187,7 +230,7 @@ __meta__ = {
 polygon = PoolVector2Array( -45.2646, -33.0309, 33.0309, -15.9038, 11.0103, 53.8282 )
 
 [node name="Oreja2" type="Sprite" parent="Fichas"]
-position = Vector2( 705, 100 )
+position = Vector2( 883, 208 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 11 )
 offset = Vector2( 9.78696, -9.7869 )
@@ -202,7 +245,7 @@ __meta__ = {
 polygon = PoolVector2Array( -14.6804, -45.2646, 46.488, 26.9141, -26.9141, 22.0206 )
 
 [node name="Pata1" type="Sprite" parent="Fichas"]
-position = Vector2( 637.157, 499.576 )
+position = Vector2( 938, 239 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 14 )
 offset = Vector2( -7.34027, -7.34019 )
@@ -217,7 +260,7 @@ __meta__ = {
 polygon = PoolVector2Array( -39.1478, 15.9038, 24.4673, -31.8076, 12.2336, 17.1271 )
 
 [node name="Pata2" type="Sprite" parent="Fichas"]
-position = Vector2( 739, 506 )
+position = Vector2( 865, 340 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 12 )
 script = ExtResource( 15 )
@@ -231,7 +274,7 @@ __meta__ = {
 polygon = PoolVector2Array( -23.244, -20.7973, 20.7972, -20.7973, 46.4879, 20.7972, -46.488, 20.7972 )
 
 [node name="Pecho" type="Sprite" parent="Fichas"]
-position = Vector2( 722, 329 )
+position = Vector2( 936, 357 )
 scale = Vector2( 0.817416, 0.817416 )
 texture = ExtResource( 10 )
 script = ExtResource( 15 )
@@ -244,4 +287,52 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pecho/Area2D"]
 polygon = PoolVector2Array( -15.9039, -86.8591, -53.8282, 69.7319, 4.89337, 134.57, 55.0515, -135.794 )
 
+[node name="Timer" parent="." instance=ExtResource( 21 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+tiempo = 50
+
+[node name="AnimalFinal" type="Sprite" parent="."]
+visible = false
+position = Vector2( 786, 330 )
+scale = Vector2( 0.759766, 0.759766 )
+texture = ExtResource( 24 )
+
+[node name="MarginGanar" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 437.0
+margin_top = 20.0
+margin_right = 684.0
+margin_bottom = 150.0
+custom_constants/margin_top = 35
+
+[node name="TextureRect" type="TextureRect" parent="MarginGanar"]
+margin_top = 35.0
+margin_right = 247.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 164, 77 )
+texture = ExtResource( 22 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginGanar/TextureRect"]
+margin_left = 18.5
+margin_top = 24.0
+margin_right = 229.5
+margin_bottom = 59.0
+size_flags_horizontal = 4
+theme = ExtResource( 23 )
+text = "Ganaste :)"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="MarginContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]
+
 [editable path="SiluetaGato"]
+[editable path="Timer"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Puzzle/dinosaurio/dientes2.png" type="Texture" id=1]
 [ext_resource path="res://Puzzle/dinosaurio/dientes1.png" type="Texture" id=2]
@@ -7,8 +7,8 @@
 [ext_resource path="res://Puzzle/dinosaurio/ocico1.png" type="Texture" id=5]
 [ext_resource path="res://Puzzle/dinosaurio/espalda1.png" type="Texture" id=6]
 [ext_resource path="res://Puzzle/dinosaurio/espalda2.png" type="Texture" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://Puzzle/fondo_fichas.png" type="Texture" id=9]
+[ext_resource path="res://MenuInicio/salirHover.png" type="Texture" id=8]
+[ext_resource path="res://Puzzle/fondo.png" type="Texture" id=9]
 [ext_resource path="res://Puzzle/dinosaurio/pata1_2.png" type="Texture" id=10]
 [ext_resource path="res://Puzzle/dinosaurio/pierna1_4.png" type="Texture" id=11]
 [ext_resource path="res://Puzzle/dinosaurio/pierna1_2.png" type="Texture" id=12]
@@ -30,10 +30,57 @@
 [ext_resource path="res://Puzzle/dinosaurio/cola2.png" type="Texture" id=28]
 [ext_resource path="res://Puzzle/dinosaurio/cola3.png" type="Texture" id=29]
 [ext_resource path="res://Puzzle/dinosaurio/cabeza.png" type="Texture" id=30]
+[ext_resource path="res://Puzzle/pieza.gd" type="Script" id=31]
+[ext_resource path="res://Puzzle/silueta.gd" type="Script" id=32]
+[ext_resource path="res://MenuInicio/salirNormal.png" type="Texture" id=33]
+[ext_resource path="res://MenuInicio/salirClick.png" type="Texture" id=34]
+[ext_resource path="res://Puzzle/dinosaurio/puzzleDinosaurio.gd" type="Script" id=35]
+[ext_resource path="res://mixtili/Mixtili.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Puzzle/fondo_piezas.png" type="Texture" id=37]
+[ext_resource path="res://timer/Timer.tscn" type="PackedScene" id=38]
+[ext_resource path="res://timer/fondoTImer.png" type="Texture" id=39]
+[ext_resource path="res://timer/tema_ganar.tres" type="Theme" id=40]
+[ext_resource path="res://Puzzle/dinosaurio/dino1.png" type="Texture" id=41]
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="PuzzleDinosaurio" type="Node2D"]
+script = ExtResource( 35 )
+
+[node name="Fondo" type="Sprite" parent="."]
+position = Vector2( 512, 300.5 )
+scale = Vector2( 0.534375, 0.558333 )
+texture = ExtResource( 9 )
+
+[node name="Paneles" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="FondoPiezas" type="Sprite" parent="Paneles"]
+position = Vector2( 645.5, 301.36 )
+scale = Vector2( 0.711914, 0.727282 )
+texture = ExtResource( 37 )
+
+[node name="ColorRect2" type="ColorRect" parent="Paneles"]
+margin_left = 292.0
+margin_top = 14.0
+margin_right = 1011.0
+margin_bottom = 331.0
+mouse_filter = 2
+color = Color( 1, 0.921569, 0.847059, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Paneles"]
+margin_left = 293.0
+margin_top = 336.0
+margin_right = 1010.0
+margin_bottom = 589.0
+mouse_filter = 2
+color = Color( 1, 0.862745, 0.4, 1 )
+
+[node name="Mixtili" parent="." instance=ExtResource( 36 )]
+position = Vector2( 136, 431 )
+scale = Vector2( 0.540598, 0.540598 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 40.0
@@ -41,154 +88,621 @@ margin_bottom = 40.0
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+[node name="BotonSalir" type="TextureButton" parent="MarginContainer"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 89.0
-margin_bottom = 89.0
-texture_normal = ExtResource( 8 )
-
-[node name="FondoFichas" type="Sprite" parent="."]
-modulate = Color( 0.25098, 0.219608, 0.219608, 0.521569 )
-position = Vector2( 641.368, 464.686 )
-rotation = 1.5708
-scale = Vector2( 2.69174, 4.69214 )
-texture = ExtResource( 9 )
+margin_bottom = 92.0
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 34 )
+texture_hover = ExtResource( 8 )
 
 [node name="SiluetaDinosaurio" type="Node2D" parent="."]
 position = Vector2( 687, 177 )
+script = ExtResource( 32 )
 
 [node name="SiluetaDinosaurio" type="Sprite" parent="SiluetaDinosaurio"]
 scale = Vector2( 1.14634, 1.14634 )
 texture = ExtResource( 3 )
 
 [node name="Ocico1" type="Area2D" parent="SiluetaDinosaurio"]
-position = Vector2( -252, -121 )
+position = Vector2( -251, -116 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Ocico1"]
 shape = SubResource( 1 )
 
 [node name="Ocico2" type="Area2D" parent="SiluetaDinosaurio"]
-position = Vector2( -242, -48 )
+position = Vector2( -240, -53 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Ocico2"]
 shape = SubResource( 1 )
 
 [node name="Dientes1" type="Area2D" parent="SiluetaDinosaurio"]
-position = Vector2( -259, -89 )
+position = Vector2( -257, -82 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Dientes1"]
 shape = SubResource( 1 )
 
-[node name="Piezas" type="Node2D" parent="."]
-position = Vector2( 75, 231 )
+[node name="Dientes2" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -252, -59 )
 
-[node name="Cabeza" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Dientes2"]
+shape = SubResource( 1 )
+
+[node name="Ojos" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -195, -149 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Ojos"]
+shape = SubResource( 1 )
+
+[node name="Cabeza" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -192, -106 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Cabeza"]
+shape = SubResource( 1 )
+
+[node name="Cuello" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -158, -87 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Cuello"]
+shape = SubResource( 1 )
+
+[node name="Pecho1" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -115, -50 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pecho1"]
+shape = SubResource( 1 )
+
+[node name="Pecho2" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -66, -1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pecho2"]
+shape = SubResource( 1 )
+
+[node name="Pata11" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -142, -13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata11"]
+shape = SubResource( 1 )
+
+[node name="Pata12" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -149, 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata12"]
+shape = SubResource( 1 )
+
+[node name="Pata13" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -137, 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata13"]
+shape = SubResource( 1 )
+
+[node name="Pata21" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -97, 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata21"]
+shape = SubResource( 1 )
+
+[node name="Pata22" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -105, 30 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata22"]
+shape = SubResource( 1 )
+
+[node name="Pata23" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -99, 28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pata23"]
+shape = SubResource( 1 )
+
+[node name="Espalda1" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( -32, -36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Espalda1"]
+shape = SubResource( 1 )
+
+[node name="Espalda2" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 34, -19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Espalda2"]
+shape = SubResource( 1 )
+
+[node name="Pierna11" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 13, 58 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna11"]
+shape = SubResource( 1 )
+
+[node name="Pierna12" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 32, 82 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna12"]
+shape = SubResource( 1 )
+
+[node name="Pierna13" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 30, 124 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna13"]
+shape = SubResource( 1 )
+
+[node name="Pierna14" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 11, 140 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna14"]
+shape = SubResource( 1 )
+
+[node name="Pierna21" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 83, 51 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna21"]
+shape = SubResource( 1 )
+
+[node name="Pierna22" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 96, 113 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna22"]
+shape = SubResource( 1 )
+
+[node name="Pierna23" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 73, 143 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Pierna23"]
+shape = SubResource( 1 )
+
+[node name="Cola1" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 118, -28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Cola1"]
+shape = SubResource( 1 )
+
+[node name="Cola2" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 178, -12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Cola2"]
+shape = SubResource( 1 )
+
+[node name="Cola3" type="Area2D" parent="SiluetaDinosaurio"]
+position = Vector2( 230, 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiluetaDinosaurio/Cola3"]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="SiluetaDinosaurio"]
+wait_time = 3.0
+
+[node name="Fichas" type="Node2D" parent="."]
+position = Vector2( 606, 146 )
+
+[node name="Cabeza" type="Sprite" parent="Fichas"]
+position = Vector2( -237, 269 )
+scale = Vector2( 0.870897, 0.870897 )
 texture = ExtResource( 30 )
+offset = Vector2( 9.539, 14.466 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Cola1" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Cabeza"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cabeza/Area2D"]
+polygon = PoolVector2Array( -24.113, -39.0402, -39.0402, 13.7789, -27.5578, 68.8945, 57.4121, -26.4096, 53.9674, -34.4473, 45.9297, -37.892, 35.5955, -41.3367, 26.4096, -43.6332, 18.3719, -43.6332 )
+
+[node name="Cola1" type="Sprite" parent="Fichas"]
+position = Vector2( 248, 256 )
+scale = Vector2( 0.348008, 0.348008 )
 texture = ExtResource( 27 )
+offset = Vector2( 10.786, 0 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Cola2" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Cola1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cola1/Area2D"]
+polygon = PoolVector2Array( -135.054, -146.548, -120.687, 143.675, 152.295, -2.87341 )
+
+[node name="Cola2" type="Sprite" parent="Fichas"]
+position = Vector2( 273, 309 )
+scale = Vector2( 1.47092, 1.47092 )
 texture = ExtResource( 28 )
+offset = Vector2( 2.597, 2.283 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Cola3" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Cola2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cola2/Area2D"]
+polygon = PoolVector2Array( -45.5497, 12.9171, -2.71942, -10.8775, 7.47827, -9.51785, 27.1938, -3.39923, 46.2295, 4.75892, 19.0356, 3.39923, -6.11865, 7.47831, -36.0319, 15.6365 )
+
+[node name="Cola3" type="Sprite" parent="Fichas"]
+position = Vector2( 299, 359 )
+scale = Vector2( 1.45704, 1.45704 )
 texture = ExtResource( 29 )
+offset = Vector2( -12.003, 15.074 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Cuello" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Cola3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cola3/Area2D"]
+polygon = PoolVector2Array( -68.6322, 2.74528, -34.3161, -4.80425, -4.11792, -7.54954, 15.0991, -4.80425, 25.3939, 3.4316, 38.434, 22.6486, 43.9246, 33.6298, 26.0802, 17.8444, 7.5495, 8.23586, -15.0991, 3.4316, -41.1793, 2.74528 )
+
+[node name="Cuello" type="Sprite" parent="Fichas"]
+position = Vector2( -136, 241 )
+scale = Vector2( 1.14941, 1.14941 )
 texture = ExtResource( 4 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Dientes1" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Cuello"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Cuello/Area2D"]
+polygon = PoolVector2Array( -46.9804, 34.8003, 14.7901, -34.8003, 19.1402, -25.2302, 26.1002, -19.1402, 33.9303, -13.9201, 45.2404, -9.57008 )
+
+[node name="Dientes1" type="Sprite" parent="Fichas"]
+position = Vector2( -285, 398 )
+scale = Vector2( 0.210067, 0.210067 )
 texture = ExtResource( 2 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Dientes2" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Dientes1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Dientes1/Area2D"]
+polygon = PoolVector2Array( -47.6038, -42.8434, 47.6038, -42.8434, 38.083, -19.0415, 33.3225, 4.76041, 28.5623, 23.8019, 28.5623, 42.8434, 0, 28.5623, -23.8019, 4.76041, -38.083, -14.2811 )
+
+[node name="Dientes2" type="Sprite" parent="Fichas"]
+position = Vector2( -252, 421 )
+scale = Vector2( 0.198385, 0.199088 )
 texture = ExtResource( 1 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Espalda1" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Dientes2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Dientes2/Area2D"]
+polygon = PoolVector2Array( -20.1628, -55.2519, -40.3257, -20.0916, -45.3665, 10.0458, -45.3665, 45.2061, 35.2849, -5.02289, 5.04053, -20.0916, -15.1221, -35.1603 )
+
+[node name="Espalda1" type="Sprite" parent="Fichas"]
+position = Vector2( -15, 267 )
+scale = Vector2( 0.946415, 0.946415 )
 texture = ExtResource( 6 )
+offset = Vector2( -20, 10 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Espalda2" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Espalda1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Espalda1/Area2D"]
+polygon = PoolVector2Array( -66.567, -60.2273, 26.4155, -46.4913, 26.4155, 79.2464 )
+
+[node name="Espalda2" type="Sprite" parent="Fichas"]
+position = Vector2( 57, 260 )
+scale = Vector2( 0.814196, 0.814196 )
 texture = ExtResource( 7 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Ocico1" type="Sprite" parent="Piezas"]
-position = Vector2( 359, -175 )
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Espalda2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Espalda2/Area2D"]
+polygon = PoolVector2Array( -45.4436, -77.377, 42.9872, -74.9206, 49.1282, 50.3564, -47.9, 77.3769 )
+
+[node name="Ocico1" type="Sprite" parent="Fichas"]
+position = Vector2( -221, 343 )
+scale = Vector2( 0.740279, 0.740279 )
 texture = ExtResource( 5 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Ocico2" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Ocico1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Ocico1/Area2D"]
+polygon = PoolVector2Array( -22.9643, -32.4203, 48.6304, -32.4203, 29.7186, 32.4202, -27.0168, 32.4202, -48.6303, 1.35081 )
+
+[node name="Ocico2" type="Sprite" parent="Fichas"]
+position = Vector2( -286, 356 )
+scale = Vector2( 0.470612, 0.470612 )
 texture = ExtResource( 26 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Ojos" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Ocico2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Ocico2/Area2D"]
+polygon = PoolVector2Array( 36.1232, -42.4978, 48.8725, 21.2489, -10.6245, 44.6227, -48.8726, 10.6245 )
+
+[node name="Ojos" type="Sprite" parent="Fichas"]
+position = Vector2( -223, 209 )
+scale = Vector2( 0.379509, 0.379509 )
 texture = ExtResource( 15 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata11" type="Sprite" parent="Piezas"]
+[node name="Area2D" type="Area2D" parent="Fichas/Ojos"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Ojos/Area2D"]
+polygon = PoolVector2Array( -28.9849, -21.0798, -47.4297, 18.4449, 44.7947, 15.8099, 28.9847, 5.26997, 13.1749, -2.63498, -7.90491, -13.1749 )
+
+[node name="Pata11" type="Sprite" parent="Fichas"]
+position = Vector2( -168, 380 )
 scale = Vector2( 0.65, 0.65 )
 texture = ExtResource( 17 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata12" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata11"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata11/Area2D"]
+polygon = PoolVector2Array( -23.0769, 10.7692, 4.61542, -9.23076, 20, 10.7692 )
+
+[node name="Pata12" type="Sprite" parent="Fichas"]
+position = Vector2( -195, 413 )
+scale = Vector2( 0.298481, 0.298481 )
 texture = ExtResource( 10 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata13" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata12"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata12/Area2D"]
+polygon = PoolVector2Array( -23.4521, -33.503, 23.452, -33.503, 3.35034, 33.503 )
+
+[node name="Pata13" type="Sprite" parent="Fichas"]
+position = Vector2( -146, 415 )
+scale = Vector2( 0.241777, 0.241777 )
 texture = ExtResource( 22 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata21" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata13"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata13/Area2D"]
+polygon = PoolVector2Array( -20.6804, -45.4965, 20.6802, -45.4965, 12.408, 41.3605 )
+
+[node name="Pata21" type="Sprite" parent="Fichas"]
+position = Vector2( -102, 379 )
+scale = Vector2( 0.574211, 0.574211 )
 texture = ExtResource( 23 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata22" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata21"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata21/Area2D"]
+polygon = PoolVector2Array( -12.1906, -13.9321, 19.1567, -3.48297, -22.6397, 15.6737 )
+
+[node name="Pata22" type="Sprite" parent="Fichas"]
+position = Vector2( -73, 392 )
+scale = Vector2( 0.28299, 0.28299 )
 texture = ExtResource( 18 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pata23" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata22"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata22/Area2D"]
+polygon = PoolVector2Array( -24.7358, -14.1348, 21.2021, -35.337, -17.6685, 35.337 )
+
+[node name="Pata23" type="Sprite" parent="Fichas"]
+position = Vector2( -104, 412 )
+scale = Vector2( 0.175941, 0.175941 )
 texture = ExtResource( 13 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pecho1" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pata23"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pata23/Area2D"]
+polygon = PoolVector2Array( 11.3674, -45.4697, 22.7349, 51.1533, -22.7349, 11.3673 )
+
+[node name="Pecho1" type="Sprite" parent="Fichas"]
+position = Vector2( -124, 328 )
+scale = Vector2( 1.0462, 1.0462 )
 texture = ExtResource( 16 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pecho2" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pecho1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pecho1/Area2D"]
+polygon = PoolVector2Array( -48.7481, -11.4701, 14.3376, -44.9247, 47.7922, 5.73506, -10.5143, 44.9247 )
+
+[node name="Pecho2" type="Sprite" parent="Fichas"]
+position = Vector2( -22, 374 )
+scale = Vector2( 0.947488, 0.947488 )
 texture = ExtResource( 24 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna11" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pecho2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pecho2/Area2D"]
+polygon = PoolVector2Array( -61.2145, -1.05539, 2.11084, -43.2723, 61.2145, 43.2724 )
+
+[node name="Pierna11" type="Sprite" parent="Fichas"]
+position = Vector2( 38, 365 )
+scale = Vector2( 0.420908, 0.420908 )
 texture = ExtResource( 19 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna12" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna11"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna11/Area2D"]
+polygon = PoolVector2Array( -47.5164, -30.8856, 47.5164, -57.0197, 9.5033, 54.6438 )
+
+[node name="Pierna12" type="Sprite" parent="Fichas"]
+position = Vector2( 88, 392 )
+scale = Vector2( 0.322639, 0.322639 )
 texture = ExtResource( 12 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna13" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna12"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna12/Area2D"]
+polygon = PoolVector2Array( -6.19897, -108.48, 46.4917, 37.1935, 34.094, 111.58, -43.3921, 3.09961 )
+
+[node name="Pierna13" type="Sprite" parent="Fichas"]
+position = Vector2( 129, 406 )
+scale = Vector2( 0.35783, 0.35783 )
 texture = ExtResource( 20 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna14" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna13"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna13/Area2D"]
+polygon = PoolVector2Array( -8.38391, -75.4548, 33.5354, -13.9731, 13.9731, 78.2494, -33.5355, 75.4548 )
+
+[node name="Pierna14" type="Sprite" parent="Fichas"]
+position = Vector2( 176, 423 )
+scale = Vector2( 0.280214, 0.280214 )
 texture = ExtResource( 11 )
+offset = Vector2( -19.141, -14.766 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna21" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna14"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna14/Area2D"]
+polygon = PoolVector2Array( -71.374, 35.687, 39.2559, -67.8054, 21.4124, 39.2557 )
+
+[node name="Pierna21" type="Sprite" parent="Fichas"]
+position = Vector2( 152, 260 )
+scale = Vector2( 0.695902, 0.695902 )
 texture = ExtResource( 21 )
+offset = Vector2( -8.175, 3.951 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna22" type="Sprite" parent="Piezas"]
-position = Vector2( -47, 38 )
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna21"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna21/Area2D"]
+polygon = PoolVector2Array( -54.6055, -25.8657, -17.2439, -37.3616, 10.0588, -48.8575, 21.5547, -20.1178, 37.3616, 54.6054, -1.43701, 28.7397, -27.3027, 5.74792 )
+
+[node name="Pierna22" type="Sprite" parent="Fichas"]
+position = Vector2( 123, 312 )
+scale = Vector2( 0.237816, 0.237816 )
 texture = ExtResource( 25 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Pierna23" type="Sprite" parent="Piezas"]
-scale = Vector2( 0.65, 0.65 )
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna22"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna22/Area2D"]
+polygon = PoolVector2Array( -50.4592, -163.992, -42.0493, 159.787, 42.0493, 163.992, 46.2544, -92.5085 )
+
+[node name="Pierna23" type="Sprite" parent="Fichas"]
+position = Vector2( 170, 338 )
+scale = Vector2( 0.365529, 0.365529 )
 texture = ExtResource( 14 )
+offset = Vector2( -14.852, -7.739 )
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Fichas/Pierna23"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fichas/Pierna23/Area2D"]
+polygon = PoolVector2Array( -62.9226, 19.1503, 32.8291, -38.3007, 30.0933, 24.6218 )
+
+[node name="Timer" parent="." instance=ExtResource( 38 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_right = 1024.0
+margin_bottom = 605.0
+rect_scale = Vector2( 1, 0.996962 )
+mouse_filter = 2
+tiempo = 150
+
+[node name="MarginGanar" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 172.0
+margin_top = 15.0
+margin_right = 419.0
+margin_bottom = 145.0
+custom_constants/margin_top = 35
+
+[node name="TextureRect" type="TextureRect" parent="MarginGanar"]
+margin_top = 35.0
+margin_right = 247.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 164, 77 )
+texture = ExtResource( 39 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginGanar/TextureRect"]
+margin_left = 18.5
+margin_top = 24.0
+margin_right = 229.5
+margin_bottom = 59.0
+size_flags_horizontal = 4
+theme = ExtResource( 40 )
+text = "Ganaste :)"
+align = 1
+valign = 1
+
+[node name="AnimalFinal" type="Sprite" parent="."]
+visible = false
+position = Vector2( 678, 170 )
+scale = Vector2( 0.634114, 0.634114 )
+texture = ExtResource( 41 )
+
+[connection signal="pressed" from="MarginContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]
+[connection signal="timeout" from="SiluetaDinosaurio/Timer" to="SiluetaDinosaurio" method="_on_Timer_timeout"]

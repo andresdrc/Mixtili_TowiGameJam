@@ -7,6 +7,7 @@ var figuras_resueltas : Dictionary
 var pos_correcta : bool = false
 var nodo_actual
 
+var terminando_nivel = false
 func _ready():
 	
 	var nodos = get_children()
@@ -34,11 +35,35 @@ func _on_Area2D_exited(area, silueta_nombre):
 		figuras_por_resolver[nodo_actual] = false
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and !terminando_nivel:
 		if event.button_index == 1 :
 			if !event.pressed and pos_correcta:
 				figuras_por_resolver[nodo_actual] = true
 			
 				if figuras_por_resolver.hash() == figuras_resueltas.hash():
 					print("Fin Nivel")
+					var nombre_escena = get_tree().current_scene.name
+					print("NOMBRE ESCENA: " + nombre_escena )
+					match nombre_escena:
+						"PuzzlePez":
+							Global.nivel_2 = true
+							print("desde silueta" + " "+ str(Global.nivel_2))
+						"PuzzleGato":
+							Global.nivel_3 = true
+						"PuzzleDinosaurio":
+							Global.nivel_4 = true
+					
+					terminando_nivel = true
+					
+					$"../AnimalFinal".show()
+					$"../Fichas".hide()
+					self.hide()
+					
+					$Timer.start()
+					$"../MarginGanar".show()
+					
 
+
+func _on_Timer_timeout():
+	print(get_tree().current_scene.name)
+	get_tree().change_scene("res://MenuInicio/MenuSeleccionNivel.tscn")

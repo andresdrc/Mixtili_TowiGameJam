@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://timer/timer.gd" type="Script" id=1]
+[ext_resource path="res://timer/tema_timer.tres" type="Theme" id=2]
+[ext_resource path="res://timer/fondoTImer.png" type="Texture" id=3]
+[ext_resource path="res://timer/fondo_timer_end.png" type="Texture" id=4]
+[ext_resource path="res://timer/boton_rojo.png" type="Texture" id=5]
+[ext_resource path="res://timer/tema_perder.tres" type="Theme" id=6]
+
+[node name="Timer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+tiempo = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -178.0
+margin_bottom = 107.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 35
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 92.0
+texture = ExtResource( 3 )
+
+[node name="TextureProgress" type="TextureProgress" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 92.0
+value = 45.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginContainer"]
+visible = false
+margin_left = 25.0
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 92.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+theme = ExtResource( 2 )
+align = 1
+valign = 1
+
+[node name="MarginPerder" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -82.0
+margin_right = 82.0
+margin_bottom = 112.0
+custom_constants/margin_top = 35
+
+[node name="TextureRect" type="TextureRect" parent="MarginPerder"]
+margin_top = 35.0
+margin_right = 164.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 164, 77 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginPerder/TextureRect"]
+margin_left = -7.0
+margin_top = 24.0
+margin_right = 172.0
+margin_bottom = 47.0
+size_flags_horizontal = 4
+theme = ExtResource( 6 )
+text = "Perdiste :("
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
